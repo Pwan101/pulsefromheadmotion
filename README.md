@@ -1,4 +1,8 @@
-pulsefromheadmotion
+Detecting Pulse from Head Motions in Video
 ===================
 
-Detecting Pulse from Head Motions in Video
+This code is based on the pulse detecting approach introduced in:
+
+http://people.csail.mit.edu/balakg/pulsefromheadmotion.html
+
+This project is written in C/C++ with OpenCV. The compilation requires CMake>2.8. 
