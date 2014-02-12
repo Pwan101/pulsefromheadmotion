@@ -8,7 +8,7 @@ int main(void)
   PFHM * pfhm=new PFHM("../resources/haarcascade_frontalface_default.xml");
 
   cv::VideoCapture capture;
-  capture.open(0);
+  capture.open("../resources/data/face8.mp4");
 
   string WINDOW_NAME="Pulse from Head Motion";
   int window_x=300;
@@ -21,15 +21,19 @@ int main(void)
   Mat savedFrame;
   Size savedSize;
   vector<vector<Point2f> > corners;
-  while (counter<=10)
+  while (true)
     {
       Mat frame, buffer, faceFrame;
-      if (!capture.isOpened()) break;
+      if (!capture.isOpened())
+	{
+	  cout << "error" << endl;
+	  break;
+	}
       capture >> buffer;
 
       if (buffer.data)
 	{
-	  pfhm->processImage(buffer, frame);
+	  pfhm->processImage(buffer, frame, 2); // no process image's size
 	  Rect face(0,0,10,10);
 	  pfhm->findFace(frame, frame, face, faceFrame);
 
@@ -42,7 +46,7 @@ int main(void)
 	    {
 	      vector<Point2f> cornerB;
 	      cv::resize(faceFrame, faceFrame, savedSize, 0, 0, INTER_LINEAR);
-	      pfhm->performLKFilter(savedFrame, faceFrame, cornerB, 15, 100);
+	      pfhm->performLKFilter(savedFrame, faceFrame, cornerB, 15, 200);
 	      corners.push_back(cornerB);
 	    }
 
@@ -50,6 +54,7 @@ int main(void)
 	  counter++;
 	  cout << counter << endl;
 	}
+      else break;
      
       if (cv::waitKey(5)==27)
 	{
@@ -57,6 +62,10 @@ int main(void)
 	  cv::destroyWindow(WINDOW_NAME.c_str());
 	}
     }
+  
+  // release the memory attached to window
+  capture.release();
+  cv::destroyWindow(WINDOW_NAME.c_str());
 
   Mat data;
   for (int k=0;k<corners.size();k++)
@@ -66,11 +75,16 @@ int main(void)
 	{
 	  curr.push_back(corners[k].at(i).y);
 	}
+      cout << "Processed :" << k << endl;
       curr=curr.t();
       data.push_back(curr);
     }
   
-  cout << data << endl;
+  // Output processed data
+  ofstream output;
+  output.open("data.txt");
+ 
+  output << data << endl;
 
   cout << data.size() << endl;
 
@@ -83,7 +97,7 @@ int main(void)
   Mat s=data*eigenvectors.t();
 
   cout << s << endl;
-
+  
   // the S is the final pulse signal obatined from signal
   // I wrote this small library that should be able to extend easily.
   // The rest processing is not my familiar area.

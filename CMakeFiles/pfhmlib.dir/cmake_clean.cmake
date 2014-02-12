@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
   "lib/libpfhmlib.pdb"
-  "lib/libpfhmlib.dylib"
+  "lib/libpfhmlib.so"
 )
 
 # Per-language clean rules from dependency scanning.

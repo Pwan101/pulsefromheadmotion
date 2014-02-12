@@ -1,4 +1,4 @@
-# Install script for directory: /Users/dgyHome/Documents/GitHub/pulsefromheadmotion
+# Install script for directory: /home/arlmaster/pulsefromheadmotion
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,13 +27,18 @@ IF(NOT CMAKE_INSTALL_COMPONENT)
   ENDIF(COMPONENT)
 ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
+# Install shared libraries without execute permission?
+IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  SET(CMAKE_INSTALL_SO_NO_EXE "1")
+ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+
 IF(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/Users/dgyHome/Documents/GitHub/pulsefromheadmotion/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/arlmaster/pulsefromheadmotion/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/Users/dgyHome/Documents/GitHub/pulsefromheadmotion/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/arlmaster/pulsefromheadmotion/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

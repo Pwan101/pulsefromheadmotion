@@ -1,1 +1,1 @@
-/usr/bin/c++   -dynamiclib -Wl,-headerpad_max_install_names   -o lib/libpfhmlib.dylib -install_name /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/lib/libpfhmlib.dylib  
+/usr/bin/g++  -fPIC    -shared -Wl,-soname,libpfhmlib.so -o lib/libpfhmlib.so  

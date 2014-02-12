@@ -38,22 +38,16 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/2.8.12/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/2.8.12/bin/cmake -E remove -f
-
-# Escaping for special characters.
-EQUALS = =
-
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/local/Cellar/cmake/2.8.12/bin/ccmake
+RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/dgyHome/Documents/GitHub/pulsefromheadmotion
+CMAKE_SOURCE_DIR = /home/arlmaster/pulsefromheadmotion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/dgyHome/Documents/GitHub/pulsefromheadmotion
+CMAKE_BINARY_DIR = /home/arlmaster/pulsefromheadmotion
 
 #=============================================================================
 # Target rules for target CMakeFiles/pfhmain.dir
@@ -62,7 +56,7 @@ CMAKE_BINARY_DIR = /Users/dgyHome/Documents/GitHub/pulsefromheadmotion
 CMakeFiles/pfhmain.dir/all: CMakeFiles/pfhmlib.dir/all
 	$(MAKE) -f CMakeFiles/pfhmain.dir/build.make CMakeFiles/pfhmain.dir/depend
 	$(MAKE) -f CMakeFiles/pfhmain.dir/build.make CMakeFiles/pfhmain.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arlmaster/pulsefromheadmotion/CMakeFiles  1
 	@echo "Built target pfhmain"
 .PHONY : CMakeFiles/pfhmain.dir/all
 
@@ -72,9 +66,9 @@ all: CMakeFiles/pfhmain.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pfhmain.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arlmaster/pulsefromheadmotion/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pfhmain.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arlmaster/pulsefromheadmotion/CMakeFiles 0
 .PHONY : CMakeFiles/pfhmain.dir/rule
 
 # Convenience name for target.
@@ -97,7 +91,7 @@ clean: CMakeFiles/pfhmain.dir/clean
 CMakeFiles/pfhmlib.dir/all:
 	$(MAKE) -f CMakeFiles/pfhmlib.dir/build.make CMakeFiles/pfhmlib.dir/depend
 	$(MAKE) -f CMakeFiles/pfhmlib.dir/build.make CMakeFiles/pfhmlib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arlmaster/pulsefromheadmotion/CMakeFiles 
 	@echo "Built target pfhmlib"
 .PHONY : CMakeFiles/pfhmlib.dir/all
 
@@ -107,9 +101,9 @@ all: CMakeFiles/pfhmlib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pfhmlib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arlmaster/pulsefromheadmotion/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pfhmlib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dgyHome/Documents/GitHub/pulsefromheadmotion/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arlmaster/pulsefromheadmotion/CMakeFiles 0
 .PHONY : CMakeFiles/pfhmlib.dir/rule
 
 # Convenience name for target.
