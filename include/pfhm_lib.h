@@ -200,6 +200,65 @@ class PFHM
       }
   }
 
+  // FROM: http://mechatronics.ece.usu.edu/yqchen/filter.c/FILTER.C
+  // Function: C implemenation of Matlab filter
+  // ord: order (ord=order*2)
+  // a: butter parameter a
+  // b: butter parameter b
+  // np: size of signal
+  // x: input signal
+  // y: filtered signal
+  void filter(int ord, float *a, float *b, int np, float *x, float *y)
+  {
+    y[0]=b[0]*x[0];
+    for (int i=1;i<ord+1;i++)
+      {
+        y[i]=0.0;
+        for (j=0;j<i+1;j++)
+	  y[i]=y[i]+b[j]*x[i-j];
+        for (j=0;j<i;j++)
+	  y[i]=y[i]-a[j+1]*y[i-j-1];
+      }
+    /* end of initial part */
+    for (int i=ord+1;i<np+1;i++)
+      {
+	y[i]=0.0;
+        for (int j=0;j<ord+1;j++)
+	  y[i]=y[i]+b[j]*x[i-j];
+        for (int j=0;j<ord;j++)
+	  y[i]=y[i]-a[j+1]*y[i-j-1];
+      }
+  }
+
+  // FROM: http://mechatronics.ece.usu.edu/yqchen/filter.c/FILTER.C
+  // Function: C implemenation of Matlab filtfilt
+  // ord: order (ord=order*2)
+  // a: butter parameter a
+  // b: butter parameter b
+  // np: size of signal
+  // x: input signal
+  // y: filtered signal
+  void filtfilt(int ord, float *a, float *b, int np, float *x, float *y)
+  {
+    filter(ORDER,a,b,NP,x,y);
+
+    for (i=0;i<NP;i++)
+      { 
+	x[i]=y[NP-i-1];
+      }
+    /* do FILTER again */
+    filter(ORDER,a,b,NP,x,y);
+    /* reverse the series back */
+    for (i=0;i<NP;i++)
+      { 
+	x[i]=y[NP-i-1];
+      }
+    for (i=0;i<NP;i++)
+      { 
+	y[i]=x[i];
+      }
+  }
+
   // Funtion: to return bandpassw butter worth filter parameters
   // in: input data matrix in 1*N
   // a: butter worth filter parameter
