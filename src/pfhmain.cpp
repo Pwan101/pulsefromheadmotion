@@ -80,32 +80,18 @@ int main(void)
       data.push_back(curr);
     }
   
-  // Output processed data
-  ofstream output;
-  output.open("data.txt");
- 
-  output << data << endl;
+  Mat origin=data.t();
+  Mat processed;
 
-  cout << data.size() << endl;
+  pfhm->interpolation(origin, processed, 30, 250, true);
 
-  PCA pca(data, Mat(), CV_PCA_DATA_AS_ROW);
+  Mat S;
+  pfhm->calcuatePCAProjection(processed.t(), S);
 
-  Mat mean=pca.mean.clone();
-  Mat eigenvalues=pca.eigenvalues.clone();
-  Mat eigenvectors=pca.eigenvectors.clone();
+  double heart_beat;
+  pfhm->calculateHeartRate(S, heart_beat, 250);
 
-  Mat s=data*eigenvectors.t();
-
-  cout << s << endl;
-  
-  // the S is the final pulse signal obatined from signal
-  // I wrote this small library that should be able to extend easily.
-  // The rest processing is not my familiar area.
-  // There are some missing parts
-  // First of all, from my computer, it hard to say what is the frequency of processing data
-  // However, according to the paper, we have to upgrade it to roughly 250Hz
-  // Secondly, a temporal filter is not aplied in this version.
-  // Third, the final calculation of heart rate is missing.
+  cout << heart_beat << endl;
 
   return 0;
 }
